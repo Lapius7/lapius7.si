@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lapius7</title>
+  <meta name="description" content="Lapius7 の案内ページ。個人で開発しているサービスの公式サイトは lapius7.com です。">
+  <link rel="canonical" href="https://lapius7.si/">
+  <meta name="theme-color" content="#F7F6F3" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lapius7">
+  <meta property="og:title" content="Lapius7">
+  <meta property="og:description" content="個人で開発しているサービスの公式サイトは lapius7.com です。">
+  <meta property="og:url" content="https://lapius7.si/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232F3437'/%3E%3Cpath d='M20 16v26a6 6 0 0 0 6 6h18' fill='none' stroke='%23F7F6F3' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #F7F6F3;
+      --surface: #FFFFFF;
+      --text: #2F3437;
+      --muted: #787774;
+      --border: #EAEAEA;
+      --cta-bg: #111111;
+      --cta-text: #FFFFFF;
+      --cta-hover: #333333;
+      --tag-bg: #E1F3FE;
+      --tag-text: #1F6C9F;
+      --glow: rgba(120, 100, 70, 0.07);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #161615;
+        --surface: #1D1D1B;
+        --text: #E9E8E4;
+        --muted: #A19F99;
+        --border: rgba(255, 255, 255, 0.09);
+        --cta-bg: #F2F1ED;
+        --cta-text: #111111;
+        --cta-hover: #FFFFFF;
+        --tag-bg: rgba(31, 108, 159, 0.22);
+        --tag-text: #8CC8EE;
+        --glow: rgba(255, 235, 200, 0.05);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "SF Pro Display", "Geist Sans", "Helvetica Neue", "Hiragino Sans", "Noto Sans JP", system-ui, sans-serif;
+      line-height: 1.6;
+    }
+    /* ごく淡い光のにじみ(背景の平坦さを避ける) */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(60rem 36rem at 12% -8%, var(--glow), transparent 70%),
+        radial-gradient(48rem 30rem at 100% 105%, var(--glow), transparent 70%);
+    }
+    main {
+      position: relative;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 64rem;
+      margin: 0 auto;
+      padding: clamp(2.5rem, 8vw, 6rem) clamp(1.25rem, 5vw, 2.5rem);
+    }
+    .card {
+      width: 100%;
+      max-width: 40rem;
+      padding: clamp(2rem, 6vw, 3.25rem);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    .tag {
+      display: inline-block;
+      margin: 0 0 1.5rem;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--tag-text);
+      background: var(--tag-bg);
+      border-radius: 9999px;
+    }
+    h1 {
+      margin: 0 0 1rem;
+      font-family: "Newsreader", "Lyon Text", "Hiragino Mincho ProN", "Noto Serif JP", "Yu Mincho", serif;
+      font-weight: 500;
+      font-size: clamp(2.75rem, 11vw, 4.75rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+    p { margin: 0; }
+    .lead { color: var(--muted); font-size: 1.0625rem; max-width: 30rem; }
+    .actions { margin-top: 2.25rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.15rem;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--cta-text);
+      background: var(--cta-bg);
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 160ms ease, transform 160ms ease;
+    }
+    .cta:hover { background: var(--cta-hover); }
+    .cta:active { transform: scale(0.98); }
+    .cta:focus-visible { outline: 2px solid var(--tag-text); outline-offset: 3px; }
+    .cta svg { width: 1em; height: 1em; }
+    footer {
+      position: relative;
+      padding: 1.25rem clamp(1.25rem, 5vw, 2.5rem) 1.75rem;
+      font-size: 0.8125rem;
+      color: var(--muted);
+      text-align: center;
+    }
+    /* 読み込み時にやわらかく表示 */
+    .reveal { animation: rise 700ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+    .reveal:nth-child(2) { animation-delay: 70ms; }
+    .reveal:nth-child(3) { animation-delay: 140ms; }
+    .reveal:nth-child(4) { animation-delay: 210ms; }
+    @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { animation: none; }
+      .cta { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="card">
+      <p class="tag reveal">Lapius7</p>
+      <h1 class="reveal">Lapius7</h1>
+      <p class="lead reveal">個人で開発しているサービスの公式サイトは lapius7.com にあります。開発者向けのツールや、日常で使う小さな道具をまとめています。</p>
+      <div class="actions reveal">
+        <a class="cta" href="https://lapius7.com/">
+          lapius7.com を開く
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+    </div>
+  </main>
+  <footer>&copy; <span id="y">2026</span> Lapius7</footer>
+  <script>document.getElementById("y").textContent = new Date().getFullYear()</script>
+</body>
+</html>
